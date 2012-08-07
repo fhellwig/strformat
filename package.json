@@ -1,0 +1,16 @@
+{
+    "name": "strformat",
+    "version": "0.0.1",
+    "description": "Node.js string formatting the way you expect it to work.",
+    "keywords": ["string","format"],
+    "licenses": [{
+        "type": "MIT",
+        "url": "http://www.opensource.org/licenses/MIT"
+    }],
+    "author": "Frank Hellwig <frank@hellwig.org>",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/fhellwig/strformat.git"
+    },
+    "main": "./strformat.js"
+}
