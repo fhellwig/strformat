@@ -20,6 +20,9 @@ If the second parameter is an array or a list of values, then the placeholders
 are in the form of `{<n>}` where `<n>` is either the array index or the
 positional index of the substitution value in the argument list.
 
+Placeholders are escaped by doubling them (e.g., {{0}}). Any placeholder not
+matching an argument is left alone.
+
 Returns the formatted string.
 
 ## Examples
