@@ -61,6 +61,11 @@ console.log(message);
 
 >Output: `please press F1 for help`
 
+## Test
+
+    $ npm test
+
+
 ## License (MIT)
 
 Copyright (c) 2012 Frank Hellwig
