@@ -65,8 +65,14 @@ console.log(message);
 
     $ npm test
 
+## Contributors
 
-## License (MIT)
+- Frank Hellwig (fhellwig)
+- Johan Hernandez (thepumpkin1979)
+
+## License
+
+*MIT License*
 
 Copyright (c) 2012 Frank Hellwig
 
