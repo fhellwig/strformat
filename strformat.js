@@ -61,4 +61,4 @@ function strformat(str, args) {
     });
 }
 
-module.exports = exports = strformat;
+module.exports = strformat;
