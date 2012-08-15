@@ -3,7 +3,7 @@ var assert = require('assert');
 var strformat = require('../strformat.js');
 
 vows.describe('strformat').addBatch({
-  "When I perform stdformat on a text without placeholder": {
+  "When I perform strformat on a text without placeholder": {
     topic: function() {
       return strformat('hello world', {'dummy': 'stuff'});
     },
@@ -11,7 +11,7 @@ vows.describe('strformat').addBatch({
       assert.strictEqual(res, 'hello world');
     }
   },
-  "When I perform stdformat on a text with a placeholder": {
+  "When I perform strformat on a text with a placeholder": {
     topic: function() {
       return strformat('hello {what}', {'what': 'world'});
     },
@@ -19,7 +19,7 @@ vows.describe('strformat').addBatch({
       assert.strictEqual(res, 'hello world');
     }
   },
-  "When I perform stdformat on a text with a escaped placeholder": {
+  "When I perform strformat on a text with a escaped placeholder": {
     topic: function() {
       return strformat('hello {{what}}', {'what': 'world'});
     },
@@ -27,7 +27,7 @@ vows.describe('strformat').addBatch({
       assert.strictEqual(res, 'hello {what}');
     }
   },
-  "When I perform stdformat on a text with no arguments": {
+  "When I perform strformat on a text with no arguments": {
     topic: function() {
       return strformat('hello {what}');
     },
@@ -35,7 +35,7 @@ vows.describe('strformat').addBatch({
       assert.strictEqual(res, 'hello {what}');
     }
   },
-  "When I perform stdformat on a text and the arguments are an array": {
+  "When I perform strformat on a text and the arguments are an array": {
     topic: function() {
       return strformat('hello {1}', ['foo', 'world']);
     },
