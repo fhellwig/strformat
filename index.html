@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>strformat by fhellwig</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">strformat</h1>
+        <p class="header">Node.js string formatting the way you expect it to work.</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/fhellwig/strformat/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/fhellwig/strformat/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/fhellwig/strformat">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/fhellwig">fhellwig</a></p>
+
+
+      </header>
+      <section>
+        <h1>strformat</h1>
+
+<p>Node.js string formatting the way you expect it to work.</p>
+
+<h2>Installation</h2>
+
+<pre><code>npm install strformat
+</code></pre>
+
+<h2>API</h2>
+
+<pre><code>strformat(str, args...)
+</code></pre>
+
+<p>Replaces the placeholders in <code>str</code> with the substitution values in <code>args...</code>.
+The <code>args...</code> parameter can be an object, an array, or a list of values.</p>
+
+<p>If the second parameter is an object, then the placeholders are in the form of
+<code>{&lt;property&gt;}</code> where the <code>&lt;property&gt;</code> is a property of the object.</p>
+
+<p>If the second parameter is an array or a list of values, then the placeholders
+are in the form of <code>{&lt;n&gt;}</code> where <code>&lt;n&gt;</code> is either the array index or the
+positional index of the substitution value in the argument list.</p>
+
+<p>Placeholders are escaped by doubling them (e.g., {{0}}). Any placeholder not
+matching an argument is left alone.</p>
+
+<p>Returns the formatted string.</p>
+
+<h2>Examples</h2>
+
+<p>For all examples, the <code>strformat</code> function is exported by the <code>strformat</code> module:</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">strformat</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'strformat'</span><span class="p">);</span>
+</pre></div>
+
+<h3>Object property substitution</h3>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">logfile</span> <span class="o">=</span> <span class="nx">strformat</span><span class="p">(</span><span class="s1">'/var/log/{name}.log'</span><span class="p">,</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./package.json'</span><span class="p">));</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">logfile</span><span class="p">);</span>
+</pre></div>
+
+<blockquote>
+<p>Output: <code>/var/log/strformat.log</code></p>
+</blockquote>
+
+<h3>Array index substitution</h3>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">code</span> <span class="o">=</span> <span class="p">[</span><span class="mi">404</span><span class="p">,</span> <span class="s1">'Not Found'</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">status</span> <span class="o">=</span> <span class="nx">strformat</span><span class="p">(</span><span class="s1">'status code {0} is "{1}"'</span><span class="p">,</span> <span class="nx">code</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">status</span><span class="p">);</span>
+</pre></div>
+
+<blockquote>
+<p>Output: <code>status code 404 is "Not Found"</code></p>
+</blockquote>
+
+<h3>Positional argument substitution</h3>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">message</span> <span class="o">=</span> <span class="nx">strformat</span><span class="p">(</span><span class="s1">'please press {0} for {1}'</span><span class="p">,</span> <span class="s1">'F1'</span><span class="p">,</span> <span class="s1">'help'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+</pre></div>
+
+<blockquote>
+<p>Output: <code>please press F1 for help</code></p>
+</blockquote>
+
+<h2>Test</h2>
+
+<pre><code>$ npm test
+</code></pre>
+
+<h2>Contributors</h2>
+
+<ul>
+<li>Frank Hellwig (fhellwig)</li>
+<li>Johan Hernandez (thepumpkin1979)</li>
+</ul><h2>License</h2>
+
+<p>(The MIT License)</p>
+
+<p>Copyright (c) 2012 Frank Hellwig</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to
+deal in the Software without restriction, including without limitation the
+rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+sell copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+IN THE SOFTWARE.</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		          <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("strformat");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
