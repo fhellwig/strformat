@@ -72,7 +72,7 @@ console.log(message);
 
 ## License
 
-*MIT License*
+(The MIT License)
 
 Copyright (c) 2012 Frank Hellwig
 
