@@ -42,5 +42,13 @@ vows.describe('strformat').addBatch({
     "Then the result should be the original text with the replaced indexes in the array": function(res) {
       assert.strictEqual(res, 'hello world');
     }
+  },
+  "When I perform strformat on a text and the arguments are hierarchic key": {
+    topic: function() {
+      return strformat('hello {hello.world}', {hello:{ world: 'world'}});
+    },
+    "Then the result should be the original text with the replaced texts": function (res) {
+      assert.strictEqual(res, 'hello world');
+    }
   }
 }).run();
