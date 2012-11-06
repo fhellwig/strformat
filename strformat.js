@@ -22,7 +22,7 @@
 
 // Matches '{{', '}}', and '{<token>}' where <token> is one or more
 // word characters (letter, number, or underscore).
-var RE = /\{\{|\}\}|\{(\w+)\}/g;
+var RE = /\{\{|\}\}|\{([a-zA-Z0-9_.]+)\}/g;
 
 /**
  * Formats the specified string by replacing placeholders in the string with
@@ -49,6 +49,32 @@ function strformat(str, args) {
     if (typeof args !== 'object') {
         args = Array.prototype.slice.call(arguments, 1);
     }
+
+    var lookup, resolve;
+    lookup = function(object, key) {
+        var match;
+        //if (!/^(\d+)([.]|$)/.test(key)) {
+        //    key = '0.' + key;
+        //}
+        while (match = /(.+?)[.](.+)/.exec(key)) {
+            object = resolve(object, match[1]);
+            key = match[2];
+        }
+        return resolve(object, key);
+    };
+
+    resolve = function(object, key) {
+        console.log(object);
+        console.log(key);
+        var value;
+        value = object[key];
+        if (typeof value === 'function') {
+            return value.call(object);
+        } else {
+            return value;
+        }
+    };
+
     return str.replace(RE, function (m, n) {
         if (m == '{{') {
             return '{';
@@ -56,9 +82,11 @@ function strformat(str, args) {
         if (m == '}}') {
             return '}';
         }
-        var val = args[n];
+        var val = lookup(args, n);
         return (typeof val === 'undefined') ? m : val;
     });
+
+
 }
 
 module.exports = strformat;
