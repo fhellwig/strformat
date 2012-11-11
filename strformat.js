@@ -22,7 +22,23 @@
 
 // Matches '{{', '}}', and '{<token>}' where <token> is one or more
 // word characters (letter, number, or underscore).
-var RE = /\{\{|\}\}|\{(\w+)\}/g;
+var RE = /\{\{|\}\}|\{([^\}]+)\}/g;
+
+// Gets a property from an object by string.
+function getProperty(o, s) {
+    s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+    s = s.replace(/^\./, '');           // strip a leading dot
+    var a = s.split('.');
+    while (a.length) {
+        var n = a.shift();
+        if (n in o) {
+            o = o[n];
+        } else {
+            return;
+        }
+    }
+    return o;
+}
 
 /**
  * Formats the specified string by replacing placeholders in the string with
@@ -46,8 +62,11 @@ var RE = /\{\{|\}\}|\{(\w+)\}/g;
  *      Returns: 'Hi John Doe' (uses object property name placeholders)
  */
 function strformat(str, args) {
-    if (typeof args !== 'object') {
-        args = Array.prototype.slice.call(arguments, 1);
+    args = Array.prototype.slice.call(arguments, 1);
+    if (args.length < 1) {
+        return str;         // nothing to replace
+    } else if (args.length < 2) {
+        args = args[0];     // replacements apply to this one argument
     }
     return str.replace(RE, function (m, n) {
         if (m == '{{') {
@@ -56,7 +75,7 @@ function strformat(str, args) {
         if (m == '}}') {
             return '}';
         }
-        var val = args[n];
+        var val = getProperty(args, n);
         return (typeof val === 'undefined') ? m : val;
     });
 }

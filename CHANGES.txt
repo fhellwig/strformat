@@ -1,3 +1,6 @@
+0.0.3
+    - Handle nested properies
+
 0.0.2
     - Add tests (thepumpkin1979)
 

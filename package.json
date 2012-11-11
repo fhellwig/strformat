@@ -1,6 +1,6 @@
 {
     "name": "strformat",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Node.js string formatting the way you expect it to work.",
     "keywords": ["string","format"],
     "licenses": [{

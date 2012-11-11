@@ -15,6 +15,8 @@ The `args...` parameter can be an object, an array, or a list of values.
 
 If the second parameter is an object, then the placeholders are in the form of
 `{<property>}` where the `<property>` is a property of the object.
+(Please see the Advanced Topics section for nested properties as well as
+multiple object replacement values.)
 
 If the second parameter is an array or a list of values, then the placeholders
 are in the form of `{<n>}` where `<n>` is either the array index or the
@@ -60,6 +62,45 @@ console.log(message);
 ```
 
 >Output: `please press F1 for help`
+
+## Advanced Topics
+
+Object property replacement can be nested. For example, given the object
+
+```javascript
+var contact = {
+    name: {
+        first: 'John',
+        last: 'Smith'
+    },
+    phone: {
+        work: '123-4567',
+        home: '555-1212'
+    }
+};
+```
+
+Then the following will resolve as expected:
+
+```javascript
+strformat('Your full name is {name.first} {name.last}', contact);
+```
+
+This also works with indexed properties:
+
+```javascript
+strformat('{0}: {1.phone.home}', 'Home Phone', contact);
+```
+
+When the number of additional arguments is greater than one, an index value
+*must* be the first item in any replacement specifier.
+
+```javascript
+strformat('{0.1} {1.0}', [4, 5], [7, 8]);
+```
+
+This results in the string '5 7' since the first values index the arguments by
+position while the second values select the array element.
 
 ## Test
 
