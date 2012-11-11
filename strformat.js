@@ -65,8 +65,8 @@ function strformat(str, args) {
     args = Array.prototype.slice.call(arguments, 1);
     if (args.length < 1) {
         return str;         // nothing to replace
-    } else if (args.length < 2) {
-        args = args[0];     // replacements apply to this one argument
+    } else if ((args.length < 2) && (typeof args[0] === 'object')) {
+        args = args[0];     // handle a single array or object
     }
     return str.replace(RE, function (m, n) {
         if (m == '{{') {

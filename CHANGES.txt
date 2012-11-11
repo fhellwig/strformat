@@ -1,5 +1,5 @@
 0.0.3
-    - Handle nested properies
+    - Handle nested properties
 
 0.0.2
     - Add tests (thepumpkin1979)
