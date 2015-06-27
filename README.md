@@ -2,9 +2,57 @@
 
 Node.js string formatting the way you expect it to work.
 
+Now also available as an AngularJS module.
+
 ## Installation
 
-    npm install strformat
+### Node.js
+
+Install `strformat` using npm.
+
+```
+npm install strformat
+```
+
+Then use the `strformat` fuction exported by the module.
+
+```javascript
+var strformat = require('strformat');
+
+var name = {
+    first: 'John',
+    last: 'Smith'
+};
+
+var fullName = strformat('{first} {last}', name);
+```
+
+### AngularJS
+
+Install `angular-strformat` using bower.
+
+```
+bower install angular-strformat --save
+```
+
+Declare a dependency on the `strformat` module.
+
+```javascript
+var app = angular.module('app', ['strformat']);
+```
+
+Then use the function exported by the `strformat` factory.
+
+```javascript
+app.controller('AppCtrl', function($scope, strformat) {
+    var name = {
+	first: 'John',
+	last: 'Smith'
+    };
+
+    $scope.fullName = strformat('{first} {last}', name);
+});
+```
 
 ## API
 
@@ -29,11 +77,8 @@ Returns the formatted string.
 
 ## Examples
 
-For all examples, the `strformat` function is exported by the `strformat` module:
-
-```javascript
-var strformat = require('strformat');
-```
+For all examples, the `strformat` function is exported by the `strformat` module
+or returned by the `strformat` factory in the `strformat` AngularJS module.
 
 ### Object property substitution
 
@@ -92,15 +137,15 @@ This also works with indexed properties:
 strformat('{0}: {1.phone.home}', 'Home Phone', contact);
 ```
 
-When the number of additional arguments is greater than one, an index value
-*must* be the first item in any replacement specifier.
+When the number of additional arguments is greater than one, a positional index
+value *must* be the first item in any replacement specifier.
 
 ```javascript
 strformat('{0.1} {1.0}', [4, 5], [7, 8]);
 ```
 
-This results in the string '5 7' since the first values index the arguments by
-position while the second values select the array element.
+This results in the string '5 7' since the first components index the arguments by
+position while the second components select the array element.
 
 ## Test
 
