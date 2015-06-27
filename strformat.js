@@ -41,25 +41,25 @@ function getProperty(o, s) {
 }
 
 /**
- * Formats the specified string by replacing placeholders in the string with
- * replacement values from the function arguments. Placeholders are specified
- * with curly braces.
+ * Formats the specified string by replacing placeholders in the
+ * string with replacement values from the function arguments.
+ * Placeholders are specified with curly braces.
  *
- * The arguments can be a list of values, an array, or an object. For a list of
- * values or an array, numeric placeholders are used. For an object, property
- * name placeholders are used.
+ * The arguments can be a list of values, an array, or an object.
+ * For a list of values or an array, numeric placeholders are used.
+ * For an object, property name placeholders are used.
  *
- * Placeholders are escaped by doubling them (e.g., {{0}}). Any placeholder not
- * matching an argument is left alone.
+ * Placeholders are escaped by doubling them (e.g., {{0}}).
+ * Any placeholder not matching an argument is left alone.
  *
  * strformat('Error {0}: {1}', 404, 'Not Found');
- *      Returns: 'Error 404: Not Found' (uses argument position placeholders)
+ * > 'Error 404: Not Found' (uses argument position placeholders)
  *
  * strformat('{0}, {1}, and {2}', ['Red', 'Green', 'Blue']);
- *      Returns: 'Red, Green, and Blue' (uses array index placeholders)
+ * > 'Red, Green, and Blue' (uses array index placeholders)
  *
  * strformat('Hi {first} {last}', {first: 'John', last: 'Doe'});
- *      Returns: 'Hi John Doe' (uses object property name placeholders)
+ * > 'Hi John Doe' (uses object property name placeholders)
  */
 function strformat(str, args) {
     args = Array.prototype.slice.call(arguments, 1);
