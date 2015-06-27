@@ -11,7 +11,7 @@ Now also available as an AngularJS module.
 Install `strformat` using npm.
 
 ```
-npm install strformat
+npm install strformat --save
 ```
 
 Then use the `strformat` fuction exported by the module.
@@ -46,8 +46,8 @@ Then use the function exported by the `strformat` factory.
 ```javascript
 app.controller('AppCtrl', function($scope, strformat) {
     var name = {
-	first: 'John',
-	last: 'Smith'
+        first: 'John',
+        last: 'Smith'
     };
 
     $scope.fullName = strformat('{first} {last}', name);
@@ -83,11 +83,16 @@ or returned by the `strformat` factory in the `strformat` AngularJS module.
 ### Object property substitution
 
 ```javascript
-var logfile = strformat('/var/log/{name}.log', require('./package.json'));
-console.log(logfile);
+var name = {
+    first: 'John',
+    last: 'Smith'
+};
+
+var fullName = strformat('Your full name is {first} {last}.', name);
+console.log(fullName);
 ```
 
->Output: `/var/log/strformat.log`
+>Output: `Your full name is John Smith.`
 
 ### Array index substitution
 
