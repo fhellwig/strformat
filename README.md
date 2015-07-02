@@ -1,10 +1,12 @@
 # strformat
 
-Node.js string formatting the way you expect it to work.
+String formatting for Node.js and AngularJS.
 
-Now also available as an AngularJS module.
+v0.0.6
 
 ## Installation
+
+The following describes how to install `strformat` in both Node.js using `npm` and AngularJS using `bower`.
 
 ### Node.js
 
@@ -29,10 +31,10 @@ var fullName = strformat('{first} {last}', name);
 
 ### AngularJS
 
-Install `angular-strformat` using bower.
+Install `strformat` using bower.
 
 ```
-bower install angular-strformat --save
+bower install strformat --save
 ```
 
 Declare a dependency on the `strformat` module.

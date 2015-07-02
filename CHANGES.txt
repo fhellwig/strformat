@@ -1,3 +1,6 @@
+0.0.6
+	- One file for both node and angular
+	
 0.0.5
 	- README file cleanup
 	
