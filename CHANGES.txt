@@ -1,8 +1,11 @@
+0.0.7
+    - Changed name from angular-strformat to strformat
+
 0.0.6
-	- One file for both node and angular
+    - One file for both node and angular
 	
 0.0.5
-	- README file cleanup
+    - README file cleanup
 	
 0.0.4
     - Added angular bower package

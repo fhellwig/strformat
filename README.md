@@ -2,7 +2,7 @@
 
 String formatting for Node.js and AngularJS.
 
-v0.0.6
+v0.0.7
 
 ## Installation
 
